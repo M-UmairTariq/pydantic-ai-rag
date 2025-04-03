@@ -2,12 +2,13 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
+from openai import AsyncOpenAI
+
 from src.routes.db_router import router as db_router
 from src.routes.rag_router import router as rag_router
 from src.db.db import db
 
 import os
-import asyncpg
 
 from dotenv import load_dotenv
 
@@ -26,6 +27,7 @@ async def lifespan(app: FastAPI):
     
     await db.close()
 
+openai = AsyncOpenAI()
 
 app = FastAPI(lifespan=lifespan)
 

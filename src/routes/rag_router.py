@@ -1,9 +1,10 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
 import logging
 
-from src.components.doc_handler.doc_handler import add_text_to_db, extract_text_from_pdf
+from src.components.doc_handler.doc_handler import extract_text_from_pdf
 from src.components.rag_agent.rag import run_agent
 from src.schemas.QuestionRequestSchema import QuestionRequest
+from src.db.db import db
 
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
@@ -26,12 +27,14 @@ async def upload_file(file: UploadFile = File(...)):
 
         if file_type == "text/plain" or file_type == "text/markdown":
             text = content.decode("utf-8")
-            await add_text_to_db(text)
+            await db.add_text_to_db(text)
+
             return {"message": "Text file processed successfully."}
 
         elif file_type == "application/pdf":
-            text = extract_text_from_pdf(content)
-            await add_text_to_db(text)
+            text = await extract_text_from_pdf(content)
+            await db.add_text_to_db(text)
+            
             return {"message": "PDF file processed successfully."}
 
         else:
@@ -48,6 +51,7 @@ async def ask_question(request: QuestionRequest):
     """Route to ask a question and get an RAG-based answer."""
     try:
         answer = await run_agent(request.question)
+        
         return {"answer": answer}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

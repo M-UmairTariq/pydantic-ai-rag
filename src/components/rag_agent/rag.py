@@ -3,11 +3,13 @@ from dataclasses import dataclass
 import os
 import pydantic_core
 import asyncpg
-from src.components.db.db_setup import database_connect
 from pydantic_ai import Agent, RunContext
 from pydantic_ai.models.openai import OpenAIModel
-
 from openai import AsyncOpenAI
+
+from src import openai
+
+from src.db.db import db
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
@@ -54,13 +56,13 @@ async def retrieve(context: RunContext[Deps], search_query: str) -> str:
 
 async def run_agent(question: str):
     """Entry point to run the agent and perform RAG-based question answering."""
-
     # Set up the agent and dependencies
-    async with database_connect() as pool:
-        openai_client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
-        async with database_connect(False) as pool:
-            deps = Deps(openai=openai_client, pool=pool)
-            base_instruction = f"Use the 'retrieve' tool to fetch information to help you answer this question: {question}"
-            answer = await rag_agent.run(base_instruction, deps=deps)
-            return answer.data
+    pool = await db.connect(create_tables=False)
+
+    deps = Deps(openai=openai, pool=pool)
+    prompt = f"Use the 'retrieve' tool to fetch information to help you answer this question: {question}"
+    
+    answer = await rag_agent.run(prompt, deps=deps)
+        
+    return answer.data
