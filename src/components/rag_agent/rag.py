@@ -1,17 +1,14 @@
 from __future__ import annotations as _annotations
 from dataclasses import dataclass
-import os
 import pydantic_core
 import asyncpg
 from pydantic_ai import Agent, RunContext
 from pydantic_ai.models.openai import OpenAIModel
 from openai import AsyncOpenAI
 
-from src import openai
 
-from src.db.db import db
+from src.db.db import db , openai_client
 
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 @dataclass
 class Deps:
@@ -60,7 +57,7 @@ async def run_agent(question: str):
 
     pool = await db.connect(create_tables=False)
 
-    deps = Deps(openai=openai, pool=pool)
+    deps = Deps(openai=openai_client, pool=pool)
     prompt = f"Use the 'retrieve' tool to fetch information to help you answer this question: {question}"
     
     answer = await rag_agent.run(prompt, deps=deps)

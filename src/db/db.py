@@ -3,9 +3,12 @@ import os
 import json
 from typing import List
 
+from openai import AsyncOpenAI
 from src.components.chunking.chunking import Chunk, split_text_into_chunks
-from src import openai
 
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+
+openai_client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
 DB_SCHEMA = """
     CREATE EXTENSION IF NOT EXISTS vector;
@@ -41,7 +44,7 @@ class Database:
             raise ValueError("Database not connected")
 
         for chunk in chunks:
-            embedding_response = await openai.embeddings.create(
+            embedding_response = await openai_client.embeddings.create(
                 input=chunk.chunk,
                 model="text-embedding-3-small"
             )

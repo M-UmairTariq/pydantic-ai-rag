@@ -1,13 +1,9 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
-import logging
 
 from src.components.doc_handler.doc_handler import extract_text_from_pdf
 from src.components.rag_agent.rag import run_agent
 from src.schemas.QuestionRequestSchema import QuestionRequest
 from src.db.db import db
-
-# Initialize logging
-logging.basicConfig(level=logging.INFO)
 
 router = APIRouter(prefix="/rag" , tags=["RAG"])
 

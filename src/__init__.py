@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
-from openai import AsyncOpenAI
+from main import logger
 
 from src.routes.db_router import router as db_router
 from src.routes.rag_router import router as rag_router
@@ -22,12 +22,12 @@ DB_DSN = os.environ.get("DB_DSN")
 async def lifespan(app: FastAPI):
     """Manage database connection pool."""
     await db.connect(create_tables=True)
-    
+    logger.info("Database connected")
     yield
     
     await db.close()
 
-openai = AsyncOpenAI()
+
 
 app = FastAPI(lifespan=lifespan)
 
