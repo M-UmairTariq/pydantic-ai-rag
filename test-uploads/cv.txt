@@ -1,0 +1,85 @@
+
+
+Markdown Conversion:
+## Mohammad Umair
+
+mohammadumair.dev@gmail.com
+
+| +92-335-5628133 | linkedin.com/in/m-umairtariq | github.com/M-UmairTariq
+
+## Education
+
+## Institute of Management Sciences (IMSciences)
+
+Sep. 2020 - July 2024 Peshawar, Pakistan
+
+Bachelor of Science in Software Engineering (GPA: 3.45/4.0)
+
+Experience
+
+## AI Full Stack Intern
+
+Sep. 2024 - Present
+
+Bave Technologies - Birmingham, UK
+
+Remote
+
+- -Implemented machine learning models for real-world applications, achieving 85% accuracy in predictive analytics projects.
+- -Developed data pipelines and MLOps workflows, improving model deployment speed by 20%.
+- -Collaborated with industry experts to develop scalable software solutions integrating AI and backend services.
+- -Co-developed a full-stack web application for cryptocurrency transactions, integrating AI/ML models for predictive analytics
+
+## Software Engineering Fellow
+
+Headstarter - NewYork US
+
+July 2024 - Sep 2024 Remote
+
+- -Enhanced MLOps understanding by deploying models using CI/CD pipelines, reducing deployment time by 30%.
+- -Explored generative AI techniques, contributing to a project that increased automation by 15% through model optimization.
+
+## Creative Lead
+
+Help Divorced Women - HDW US Based Project
+
+Dec. 2023 - June 2024
+
+Remote - US
+
+- -Led a team to create visual assets for marketing campaigns, resulting in a 20% increase in engagement.
+- -Applied UX and Human centered designing principles to design various poster, banners.
+
+## Selected Projects
+
+## Tourism Mobile App with AI Recommender System | Flutter, Python, Firebase
+
+2024
+
+- -Led a team to develop a mobile app featuring an AI-based recommender system, increasing user engagement by 25%.
+- -Deployed a machine learning model for personalized user recommendations, utilizing collaborative filtering.
+
+## House Rent Prediction Model | Python, Scikit-Learn
+
+2024
+
+- -Developed a regression model predicting house rents with an 87% accuracy, using real-world data for training.
+- -Streamlined data processing and feature engineering, reducing model training time by 15%.
+
+## Credit Score Prediction Web App | MERN Stack, Machine Learning
+
+2024
+
+- -Built a full-stack web application to predict credit scores, integrating a Random Forest model with a user-friendly frontend.
+- -Implemented a scalable API for real-time data processing, enhancing prediction accuracy and user satisfaction.
+
+## Next Word Prediction Model | Python, NLP
+
+2024
+
+- -Implemented an NLP model with 90% prediction accuracy, improving the efficiency of text input in apps.
+- -Optimized model performance, reducing latency by 10% through hyperparameter tuning.
+
+## Technical Skills
+
+Programming Languages : Python, JavaScript/Typescript, Dart - Developed scalable APIs and backend services. Frameworks : Flutter, Node.js , Nest.js , FastAPI, React, Flask, Firebase - Built cross-platform apps and web solutions. AI/ML Tools : Scikit-Learn, TensorFlow, Pandas, MLFlow- Deployed predictive models with 85%+ accuracy. DevOps : Docker, Docker-compose, Git, CI/CD - Streamlined deployment processes and automated workflows. Design Tools : Adobe Photoshop, Illustrator, Figma - Designed intuitive user interfaces and branding materials.

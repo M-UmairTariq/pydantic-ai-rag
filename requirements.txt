@@ -1,0 +1,7 @@
+pydantic-ai
+asyncpg
+fastapi
+uvicorn
+pdfplumber
+python-multipart
+Pyrseas
