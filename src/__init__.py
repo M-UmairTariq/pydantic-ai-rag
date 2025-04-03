@@ -1,10 +1,33 @@
 from fastapi import FastAPI
+from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.routes.db_router import router as db_router
 from src.routes.rag_router import router as rag_router
+from src.db.db import db
 
-app = FastAPI()
+import os
+import asyncpg
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+# Connection string for PostgreSQL database
+DB_DSN = os.environ.get("DB_DSN")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Manage database connection pool."""
+    await db.connect(create_tables=True)
+    
+    yield
+    
+    await db.close()
+
+
+app = FastAPI(lifespan=lifespan)
 
 app.include_router(rag_router)
 app.include_router(db_router)
